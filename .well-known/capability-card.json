@@ -1,0 +1,56 @@
+{
+  "id": "api-messaging",
+  "source_type": "openapi",
+  "source_url": "/tmp/capcard-template/example-openapi.yaml",
+  "provider_name": "Example Messaging",
+  "provider_domain": "api.example.com",
+  "semantic_summary": "Example Messaging is a OPENAPI capability that gives agents and applications access to messaging workflows. It exposes 2 documented interfaces and supports bearer.",
+  "capability_tags": [
+    "messaging",
+    "bearer"
+  ],
+  "use_cases": [
+    "Send an outbound message.",
+    "Get message delivery status."
+  ],
+  "auth_methods": [
+    "bearer"
+  ],
+  "pricing_model": "unknown",
+  "onboarding_url": null,
+  "documentation_url": null,
+  "openapi_version": "3.1",
+  "endpoint_count": 2,
+  "last_crawled": "2026-04-02",
+  "quality_score": 0.7,
+  "primary_category": "messaging",
+  "sdk_languages": null,
+  "webhook_support": false,
+  "webhook_event_types": null,
+  "connect": {
+    "human_signup_required": false,
+    "account_creation_url": null,
+    "account_creation_flow": "unknown",
+    "api_key_acquisition_steps": [
+      "Open Example Messaging developer documentation.",
+      "Create or sign in to your account.",
+      "Generate credentials for your application or agent."
+    ],
+    "oauth_supported": false,
+    "oauth_scopes_required": null,
+    "oauth_authorization_url": null,
+    "oauth_token_url": null,
+    "sandbox_available": false,
+    "sandbox_base_url": null,
+    "production_base_url": "https://api.example.com",
+    "free_tier_available": false,
+    "free_tier_limits": null,
+    "time_to_first_call_minutes": 5,
+    "known_gotchas": null,
+    "auth_header_format": "Authorization: Bearer {token}",
+    "rate_limit_requests_per_minute": null,
+    "rate_limit_requests_per_day": null,
+    "rate_limit_notes": null
+  },
+  "trust": null
+}

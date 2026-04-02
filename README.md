@@ -24,7 +24,7 @@ Edit:
 
 ```json
 {
-  "openapi_url": "https://example.com/openapi.yaml",
+  "openapi_url": "./example-openapi.yaml",
   "provider": "deterministic"
 }
 ```
@@ -38,6 +38,8 @@ Provider values:
 - `gemini`
 
 `deterministic` works with no API key.
+
+The template includes `example-openapi.yaml`, so it succeeds immediately before you swap in your real API or MCP spec.
 
 `auto` will use whichever of these GitHub secrets is available:
 

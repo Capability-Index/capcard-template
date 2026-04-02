@@ -1,0 +1,52 @@
+openapi: 3.1.0
+info:
+  title: Example Messaging API
+  version: "1.0.0"
+  description: >
+    Example API used by the capcard template to generate a valid
+    capability-card.json out of the box.
+servers:
+  - url: https://api.example.com
+paths:
+  /messages:
+    post:
+      summary: Send an outbound message
+      description: Sends a message to a user.
+      operationId: sendMessage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                to:
+                  type: string
+                body:
+                  type: string
+              required:
+                - to
+                - body
+      responses:
+        "200":
+          description: Message accepted
+  /messages/{message_id}:
+    get:
+      summary: Get message delivery status
+      operationId: getMessageStatus
+      parameters:
+        - in: path
+          name: message_id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Message details
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+security:
+  - bearerAuth: []
