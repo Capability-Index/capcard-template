@@ -1,7 +1,7 @@
 {
   "id": "api-messaging",
   "source_type": "openapi",
-  "source_url": "/tmp/capcard-template/example-openapi.yaml",
+  "source_url": "./example-openapi.yaml",
   "provider_name": "Example Messaging",
   "provider_domain": "api.example.com",
   "semantic_summary": "Example Messaging is a OPENAPI capability that gives agents and applications access to messaging workflows. It exposes 2 documented interfaces and supports bearer.",
