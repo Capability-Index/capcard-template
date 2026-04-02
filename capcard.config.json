@@ -1,0 +1,4 @@
+{
+  "openapi_url": "https://example.com/openapi.yaml",
+  "provider": "deterministic"
+}

@@ -1,0 +1,64 @@
+name: Update Capability Card
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - capcard.config.json
+      - .github/workflows/update-capability-card.yml
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install capcard
+        run: pip install capcard
+
+      - name: Read config
+        run: |
+          python - <<'PY' >> "$GITHUB_ENV"
+          import json
+          from pathlib import Path
+
+          config = json.loads(Path("capcard.config.json").read_text())
+          print(f"OPENAPI_URL={config['openapi_url']}")
+          print(f"PROVIDER={config.get('provider', 'deterministic')}")
+          PY
+
+      - name: Generate and publish files
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          capcard init "$OPENAPI_URL" \
+            --provider "$PROVIDER" \
+            --output capability-card.json \
+            --publish-target github-pages \
+            --site-dir .
+
+      - name: Commit generated files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add capability-card.json .well-known/capability-card.json .nojekyll index.html
+          if [[ -z "$(git status --porcelain)" ]]; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "Update Capability Card"
+          git push
