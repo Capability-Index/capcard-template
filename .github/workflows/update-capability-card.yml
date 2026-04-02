@@ -26,7 +26,7 @@ jobs:
           python-version: "3.11"
 
       - name: Install capcard
-        run: pip install capcard
+        run: pip install git+https://github.com/Capability-Index/capcard.git
 
       - name: Read config
         run: |
