@@ -1,4 +1,5 @@
 {
+  "schema_version": "1.0",
   "id": "api-messaging",
   "source_type": "openapi",
   "source_url": "./example-openapi.yaml",
